@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produits",
+  "info": {
+    "singularName": "produit",
+    "pluralName": "produits",
+    "displayName": "produit",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "farmer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::farmer.farmer",
+      "inversedBy": "produits"
+    }
+  }
+}

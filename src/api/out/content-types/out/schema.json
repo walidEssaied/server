@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "outs",
+  "info": {
+    "singularName": "out",
+    "pluralName": "outs",
+    "displayName": "out",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::client.client"
+    },
+    "ins": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::in.in",
+      "inversedBy": "outs"
+    },
+    "amount_paid": {
+      "type": "float"
+    },
+    "amount_remaining": {
+      "type": "float"
+    },
+    "prix_total": {
+      "type": "float"
+    },
+    "poids": {
+      "type": "float"
+    },
+    "containers": {
+      "type": "float"
+    },
+    "details": {
+      "type": "json"
+    }
+  }
+}

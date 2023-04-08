@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ins",
+  "info": {
+    "singularName": "in",
+    "pluralName": "ins",
+    "displayName": "in",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "farmer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::farmer.farmer"
+    },
+    "qte_total": {
+      "type": "float"
+    },
+    "produit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::produit.produit"
+    },
+    "containers": {
+      "type": "biginteger"
+    },
+    "prix_vente": {
+      "type": "float"
+    },
+    "qte_vendu": {
+      "type": "float"
+    },
+    "qte_restant": {
+      "type": "float"
+    },
+    "prix_achat": {
+      "type": "float"
+    },
+    "outs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::out.out",
+      "mappedBy": "ins"
+    }
+  }
+}
