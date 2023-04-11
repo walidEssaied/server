@@ -15,16 +15,9 @@
     "name": {
       "type": "string"
     },
-    "address": {
-      "type": "string"
-    },
     "phone": {
-      "type": "biginteger"
-    },
-    "admin_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "admin::user"
+      "type": "biginteger",
+      "required": false
     }
   }
 }

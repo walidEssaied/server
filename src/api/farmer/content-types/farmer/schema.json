@@ -15,25 +15,25 @@
     "name": {
       "type": "string"
     },
-    "address": {
-      "type": "string"
-    },
     "phone": {
       "type": "biginteger"
-    },
-    "matricule": {
-      "type": "biginteger"
-    },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "farmer"
     },
     "produits": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::produit.produit",
+      "mappedBy": "farmer"
+    },
+    "in": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::in.in",
+      "inversedBy": "farmer"
+    },
+    "outs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::out.out",
       "mappedBy": "farmer"
     }
   }

@@ -20,6 +20,15 @@
       "relation": "manyToOne",
       "target": "api::farmer.farmer",
       "inversedBy": "produits"
+    },
+    "out": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::out.out",
+      "mappedBy": "produit"
+    },
+    "tag": {
+      "type": "string"
     }
   }
 }

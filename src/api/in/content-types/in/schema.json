@@ -12,16 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "description": {
-      "type": "string"
-    },
     "farmer": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::farmer.farmer"
-    },
-    "qte_total": {
-      "type": "float"
+      "target": "api::farmer.farmer",
+      "mappedBy": "in"
     },
     "produit": {
       "type": "relation",
@@ -30,18 +25,6 @@
     },
     "containers": {
       "type": "biginteger"
-    },
-    "prix_vente": {
-      "type": "float"
-    },
-    "qte_vendu": {
-      "type": "float"
-    },
-    "qte_restant": {
-      "type": "float"
-    },
-    "prix_achat": {
-      "type": "float"
     },
     "outs": {
       "type": "relation",

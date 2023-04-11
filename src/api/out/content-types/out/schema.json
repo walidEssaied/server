@@ -12,27 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "description": {
-      "type": "string"
-    },
-    "client": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::client.client"
-    },
     "ins": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::in.in",
       "inversedBy": "outs"
     },
-    "amount_paid": {
+    "prix": {
       "type": "float"
     },
-    "amount_remaining": {
-      "type": "float"
-    },
-    "prix_total": {
+    "total": {
       "type": "float"
     },
     "poids": {
@@ -41,8 +30,29 @@
     "containers": {
       "type": "float"
     },
-    "details": {
-      "type": "json"
+    "produit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::produit.produit",
+      "inversedBy": "out"
+    },
+    "farmer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::farmer.farmer",
+      "inversedBy": "outs"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "integer"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "client": {
+      "type": "string"
     }
   }
 }
