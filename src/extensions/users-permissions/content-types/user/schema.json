@@ -65,6 +65,36 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "outs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::out.out",
+      "mappedBy": "user"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client",
+      "mappedBy": "user"
+    },
+    "farmers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::farmer.farmer",
+      "mappedBy": "user"
+    },
+    "produits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::produit.produit",
+      "mappedBy": "user"
+    },
+    "ins": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::in.in",
+      "mappedBy": "user"
     }
   }
 }

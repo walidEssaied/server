@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -24,17 +24,23 @@
       "target": "api::produit.produit",
       "mappedBy": "farmer"
     },
-    "in": {
+    "ins": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::in.in",
-      "inversedBy": "farmer"
+      "mappedBy": "farmer"
     },
     "outs": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::out.out",
       "mappedBy": "farmer"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "farmers"
     }
   }
 }
