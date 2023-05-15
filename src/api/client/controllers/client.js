@@ -27,7 +27,7 @@ module.exports = createCoreController("api::client.client", ({ strapi }) => ({
         "api::client.client",
         {
           filters: {
-            users_permissions_user: {
+            user: {
               id: user.id,
             },
             id: id,
@@ -61,7 +61,7 @@ module.exports = createCoreController("api::client.client", ({ strapi }) => ({
         "api::client.client",
         {
           filters: {
-            users_permissions_user: {
+            user: {
               id: user.id,
             },
             id: id,

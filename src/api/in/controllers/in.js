@@ -27,7 +27,7 @@ module.exports = createCoreController("api::in.in", ({ strapi }) => ({
 
       const experienceData = await strapi.entityService.findMany("api::in.in", {
         filters: {
-          users_permissions_user: {
+          user: {
             id: user.id,
           },
           id: id,
@@ -58,7 +58,7 @@ module.exports = createCoreController("api::in.in", ({ strapi }) => ({
 
       const experienceData = await strapi.entityService.findMany("api::in.in", {
         filters: {
-          users_permissions_user: {
+          user: {
             id: user.id,
           },
           id: id,

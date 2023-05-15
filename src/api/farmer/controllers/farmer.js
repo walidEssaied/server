@@ -7,6 +7,7 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::farmer.farmer", ({ strapi }) => ({
   async create(ctx) {
     try {
+      console.log("----------------------------------------------------------------")
       const user = ctx.state.user;
       ctx.request.body.data.users_permissions_user = user.id;
       const datas = await strapi.entityService.create("api::farmer.farmer", {
@@ -27,7 +28,7 @@ module.exports = createCoreController("api::farmer.farmer", ({ strapi }) => ({
         "api::farmer.farmer",
         {
           filters: {
-            users_permissions_user: {
+            user: {
               id: user.id,
             },
             id: id,
@@ -61,7 +62,7 @@ module.exports = createCoreController("api::farmer.farmer", ({ strapi }) => ({
         "api::farmer.farmer",
         {
           filters: {
-            users_permissions_user: {
+            user: {
               id: user.id,
             },
             id: id,
