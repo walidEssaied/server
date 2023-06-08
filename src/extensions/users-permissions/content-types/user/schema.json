@@ -95,6 +95,9 @@
       "relation": "oneToMany",
       "target": "api::in.in",
       "mappedBy": "user"
+    },
+    "alert_payment": {
+      "type": "boolean"
     }
   }
 }
