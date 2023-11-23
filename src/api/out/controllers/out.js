@@ -120,20 +120,115 @@ module.exports = createCoreController("api::out.out", ({ strapi }) => ({
       ctx.body = err;
     }
   },
+  // async find(ctx) {
+  //   try {
+  //     const user = ctx.state.user;
+  //     const datas = await strapi.entityService.findMany("api::out.out", {
+  //       filters: {
+  //         user: {
+  //           id: user.id,
+  //         },
+  //       },
+  //       populate: "*",
+  //     });
+  //     return datas;
+  //   } catch (err) {
+  //     ctx.body = err;
+  //   }
+  // },
+  // async find(ctx) {
+  //   console.log({ ctx });
+  //   try {
+  //     const { filters, pagination, sort, populate } = ctx.query;
+
+  //     const baseQuery = {
+  //       user: {
+  //         id: ctx.state.user.id,
+  //       },
+  //     };
+
+  //     const page = pagination?.page || 1;
+  //     const pageSize = pagination?.pageSize || 10;
+  //     const sortField = sort || "createdAt";
+  //     const sortOrder = sortField.endsWith(":asc") ? "asc" : "desc";
+
+  //     const filterCriteria = filters || {};
+
+  //     const query = {
+  //       filters: { ...baseQuery, ...filterCriteria },
+  //       populate: populate || "*",
+  //       start: (page - 1) * pageSize,
+  //       limit: pageSize,
+  //       sort: sortField,
+  //     };
+
+  //     console.log({ query });
+
+  //     const entries = await strapi.entityService.findMany(
+  //       "api::out.out",
+  //       query
+  //     );
+
+  //     ctx.body = entries;
+  //   } catch (error) {
+  //     ctx.status = 500;
+  //     ctx.body = {
+  //       error: `An error occurred while fetching data. ${error.message}`,
+  //     };
+  //     console.error(error);
+  //   }
+  // },
+  
   async find(ctx) {
     try {
-      const user = ctx.state.user;
-      const datas = await strapi.entityService.findMany("api::out.out", {
-        filters: {
-          user: {
-            id: user.id,
-          },
+      const { filters, pagination, sort, populate } = ctx.query;
+  
+      const baseQuery = {
+        user: {
+          id: ctx.state.user.id,
         },
-        populate: "*",
+      };
+  
+      const page = pagination?.page || 1;
+      const pageSize = pagination?.pageSize || 10;
+      const sortField = sort || "createdAt";
+      const sortOrder = sortField.endsWith(":asc") ? "asc" : "desc";
+  
+      const filterCriteria = filters || {};
+  
+      const query = {
+        filters: { ...baseQuery, ...filterCriteria },
+        populate: populate || "*",
+        start: (page - 1) * pageSize,
+        limit: pageSize,
+        sort: sortField,
+      };
+  
+      const entries = await strapi.entityService.findMany("api::out.out", query);
+  
+      const totalCount = await strapi.entityService.count("api::out.out", {
+        filters: baseQuery,
       });
-      return datas;
-    } catch (err) {
-      ctx.body = err;
+  
+      const meta = {
+        pagination: {
+          page,
+          pageSize,
+          total: totalCount,
+        },
+      };
+  
+      ctx.body = {
+        data: entries,
+        meta,
+      };
+    } catch (error) {
+      ctx.status = 500;
+      ctx.body = {
+        error: `An error occurred while fetching data. ${error.message}`,
+      };
+      console.error(error);
     }
-  },
+  }
+  
 }));
